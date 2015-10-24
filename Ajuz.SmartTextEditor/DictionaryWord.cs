@@ -16,6 +16,9 @@ namespace Ajuz.SmartTextEditor
         /// </summary>
         /// <param name="text">Буквенное обозначение слова</param>
         /// <param name="frequency">Частота (сколько раз встречается в текстах)</param>
+        /// <exception cref="ArgumentNullException">text содержит null</exception>
+        /// <exception cref="ArgumentOutOfRangeException">frequency содержит значение меньше 1</exception> 
+        /// <exception cref="ArgumentException">text содержит пустую строку</exception>        
         public DictionaryWord(string text, int frequency)
         {
             if (text == null)
@@ -52,6 +55,10 @@ namespace Ajuz.SmartTextEditor
         /// </summary>
         public int Frequency { get; private set; }
 
+        /// <summary>
+        /// Преобразовать в строку
+        /// </summary>
+        /// <returns>Представление объекта в виде строки</returns>
         public override string ToString()
         {
             return string.Format(

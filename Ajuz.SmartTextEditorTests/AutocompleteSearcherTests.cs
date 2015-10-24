@@ -41,11 +41,11 @@ namespace Ajuz.SmartTextEditorTests
 
         /// <summary>
         /// Тестовый метод: 
-        /// Если в экземплярный метод FindWordsBeginingWith параметру beginOfWords 
+        /// Если в экземплярный метод FindWordsStartsWith параметру value 
         /// передается null, должно быть выброшено исключение ArgumentNullException.
         /// </summary>
         [TestMethod]
-        public void FindWordsBeginingWith_WhenBeginOfWordsIsNull_ShouldThrowArgumentNullException()
+        public void FindWordsStartsWith_WhenValueIsNull_ShouldThrowArgumentNullException()
         {
             // arrange
             var dictionaryWords = new List<DictionaryWord>();
@@ -55,12 +55,12 @@ namespace Ajuz.SmartTextEditorTests
             // act
             try
             {
-                autocompleteSearcher.FindWordsBeginingWith(null);
+                autocompleteSearcher.FindWordsStartsWith(null);
             }
             catch (ArgumentNullException e)
             {
                 //assert
-                Assert.AreEqual("beginOfWords", e.ParamName, false);
+                Assert.AreEqual("value", e.ParamName, false);
                 return;
             }
 
@@ -69,11 +69,11 @@ namespace Ajuz.SmartTextEditorTests
 
         /// <summary>
         /// Тестовый метод: 
-        /// Если в экземплярный метод FindWordsBeginingWith параметру beginOfWords 
+        /// Если в экземплярный метод FindWordsStartsWith параметру value 
         /// передается пустая строка, должно быть выброшено исключение ArgumentException.
         /// </summary>
         [TestMethod]
-        public void FindWordsBeginingWith_WhenBeginOfWordsIsEmpty_ShouldThrowArgumentException()
+        public void FindWordsStartsWith_WhenValueIsEmpty_ShouldThrowArgumentException()
         {
             // arrange
             var dictionaryWords = new List<DictionaryWord>();
@@ -83,12 +83,12 @@ namespace Ajuz.SmartTextEditorTests
             // act
             try
             {
-                autocompleteSearcher.FindWordsBeginingWith(string.Empty);
+                autocompleteSearcher.FindWordsStartsWith(string.Empty);
             }
             catch (ArgumentException e)
             {
                 //assert
-                Assert.AreEqual("beginOfWords", e.ParamName, false);
+                Assert.AreEqual("value", e.ParamName, false);
                 return;
             }
 
@@ -97,23 +97,23 @@ namespace Ajuz.SmartTextEditorTests
 
         /// <summary>
         /// Тестовый метод: 
-        /// Если в экземплярный метод FindWordsBeginingWith параметру maxCount 
+        /// Если в экземплярный метод FindWordsStartsWith параметру maxCount 
         /// передается значение меньше 1, должно быть выброшено исключение 
         /// ArgumentOutOfRangeException.
         /// </summary>
         [TestMethod]
-        public void FindWordsBeginingWith_WhenMaxCountLess1_ShouldThrowArgumentOutOfRangeException()
+        public void FindWordsStartsWith_WhenMaxCountLess1_ShouldThrowArgumentOutOfRangeException()
         {
             // arrange
             var dictionaryWords = new List<DictionaryWord>();
-            var beginOfWords = "aa";
+            var value = "aa";
 
             var autocompleteSearcher = new AutocompleteSearcher(dictionaryWords);
 
             // act
             try
             {
-                autocompleteSearcher.FindWordsBeginingWith(beginOfWords, 0);
+                autocompleteSearcher.FindWordsStartsWith(value, 0);
             }
             catch (ArgumentOutOfRangeException e)
             {
@@ -127,12 +127,12 @@ namespace Ajuz.SmartTextEditorTests
 
         /// <summary>
         /// Тестовый метод: 
-        /// Набор объектов, возвращаемый экземплярным методом FindWordsBeginingWith, 
+        /// Набор объектов, возвращаемый экземплярным методом FindWordsStartsWith, 
         /// должен являться подмножеством набора объектов dictionaryWords, 
         /// переданного параметром конструктору AutocompleteSearcher.
         /// </summary>
         [TestMethod]
-        public void FindWordsBeginingWith_ReturnSubsetOfDictionaryWordsArgumentOfConstructor()
+        public void FindWordsStartsWith_ReturnSubsetOfDictionaryWordsArgumentOfConstructor()
         {
             // arrange
             var dictionaryWords = new List<DictionaryWord>()
@@ -142,13 +142,13 @@ namespace Ajuz.SmartTextEditorTests
                 new DictionaryWord("aaaabbbccc", 100)
             };
 
-            var beginOfWords = "aa";
+            var value = "aa";
 
             var autocompleteSearcher = new AutocompleteSearcher(dictionaryWords);
 
             // act
             IEnumerable<DictionaryWord> result =
-                autocompleteSearcher.FindWordsBeginingWith(beginOfWords);
+                autocompleteSearcher.FindWordsStartsWith(value);
 
             // assert
             foreach (var item in result)
@@ -161,12 +161,12 @@ namespace Ajuz.SmartTextEditorTests
 
         /// <summary>
         /// Тестовый метод: 
-        /// Слова, возвращаемые экземплярным методом FindWordsBeginingWith, 
+        /// Слова, возвращаемые экземплярным методом FindWordsStartsWith, 
         /// должны в своем начале содержать подстроку, переданную в параметр
-        /// beginOfWords.
+        /// value.
         /// </summary>
         [TestMethod]
-        public void FindWordsBeginingWith_ReturnWordsWithSameBegining()
+        public void FindWordsStartsWith_ReturnWordsWithSameBeginning()
         {
             // arrange
             var dictionaryWords = new List<DictionaryWord>()
@@ -177,34 +177,34 @@ namespace Ajuz.SmartTextEditorTests
                 new DictionaryWord("caabbbccc", 1000)
             };
             
-            var beginOfWords = "aa";
+            var value = "aa";
             
             var autocompleteSearcher = new AutocompleteSearcher(dictionaryWords);
 
             // act
             IEnumerable<DictionaryWord> result = 
-                autocompleteSearcher.FindWordsBeginingWith(beginOfWords);
+                autocompleteSearcher.FindWordsStartsWith(value);
 
             // assert
             foreach (var item in result)
             {
                 Assert.IsTrue(
                     item.Text.StartsWith(
-                        beginOfWords,
+                        value,
                         StringComparison.Ordinal),
                     "Результат содержит слово '{0}', его начало не совпадает с '{1}'",
                     item.Text,
-                    beginOfWords);
+                    value);
             }
         }
 
         /// <summary>
         /// Тестовый метод: 
-        /// Количество слов, возвращаемых экземплярным методом FindWordsBeginingWith, 
+        /// Количество слов, возвращаемых экземплярным методом FindWordsStartsWith, 
         /// должно быть ограничено числом, переданным в параметр maxCount.
         /// </summary>
         [TestMethod]
-        public void FindWordsBeginingWith_ReturnWordsCountLimitedByMaxCountArgument()
+        public void FindWordsStartsWith_ReturnWordsCountLimitedByMaxCountArgument()
         {
             // arrange
             var dictionaryWords = new List<DictionaryWord>()
@@ -215,14 +215,14 @@ namespace Ajuz.SmartTextEditorTests
                 new DictionaryWord("aaaabbbccc", 1000)
             };
 
-            var beginOfWords = "aa";
+            var value = "aa";
             var wordsMaxCount = 2;
 
             var autocompleteSearcher = new AutocompleteSearcher(dictionaryWords);
 
             // act
             IEnumerable<DictionaryWord> result =
-                autocompleteSearcher.FindWordsBeginingWith(beginOfWords, wordsMaxCount);
+                autocompleteSearcher.FindWordsStartsWith(value, wordsMaxCount);
 
             // assert
             Assert.IsTrue(
@@ -232,12 +232,12 @@ namespace Ajuz.SmartTextEditorTests
 
         /// <summary>
         /// Тестовый метод: 
-        /// Набор слов, возвращаемый экземплярным методом FindWordsBeginingWith, 
+        /// Набор слов, возвращаемый экземплярным методом FindWordsStartsWith, 
         /// должнен быть отсортирован по частоте слова по возрастанию,
         /// а при совпадении частоты - по алфавиту по убыванию.
         /// </summary>
         [TestMethod]
-        public void FindWordsBeginingWith_ReturnWordsOrderedByFrequencyDescendingAndTextAscending()
+        public void FindWordsStartsWith_ReturnWordsOrderedByFrequencyDescendingAndTextAscending()
         {
             // arrange
             var dictionaryWords = new List<DictionaryWord>()
@@ -248,13 +248,13 @@ namespace Ajuz.SmartTextEditorTests
                 new DictionaryWord("aaaabbbccc", 1000)
             };
 
-            var beginOfWords = "aa";
+            var value = "aa";
 
             var autocompleteSearcher = new AutocompleteSearcher(dictionaryWords);
 
             // act
             IEnumerable<DictionaryWord> result =
-                autocompleteSearcher.FindWordsBeginingWith(beginOfWords);
+                autocompleteSearcher.FindWordsStartsWith(value);
 
             // assert
             DictionaryWord prevItem = null;

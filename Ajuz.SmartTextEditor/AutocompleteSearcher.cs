@@ -20,6 +20,7 @@ namespace Ajuz.SmartTextEditor
         /// Инициализирует новый экземпляр класса AutocompleteSearcher
         /// </summary>
         /// <param name="dictionaryWords">Словарь автодополнений</param>
+        /// <exception cref="ArgumentNullException">dictionaryWords содержит null</exception>
         public AutocompleteSearcher(IEnumerable<DictionaryWord> dictionaryWords)
         {
             if (dictionaryWords == null)
@@ -31,23 +32,26 @@ namespace Ajuz.SmartTextEditor
         }
 
         /// <summary>
-        /// Найти слова, начинающиеся с указанной подстроки
+        /// Найти слова, начинающиеся с указанной строки
         /// </summary>
-        /// <param name="beginOfWords">Начало слова</param>
+        /// <param name="value">Строка для сравнения</param>
         /// <param name="maxCount">Максимальное количество возвращаемых элементов</param>
-        /// <returns>Набор слов, подходящих для автодополнения </returns>
-        public IEnumerable<DictionaryWord> FindWordsBeginingWith(string beginOfWords, int maxCount = 10)
+        /// <returns>Набор слов, подходящих для автодополнения</returns>
+        /// <exception cref="ArgumentNullException">value содержит null</exception>
+        /// <exception cref="ArgumentOutOfRangeException">maxCount содержит значение меньше 1</exception>
+        /// <exception cref="ArgumentException">value содержит пустую строку</exception>
+        public IEnumerable<DictionaryWord> FindWordsStartsWith(string value, int maxCount = 10)
         {
-            if (beginOfWords == null)
+            if (value == null)
             {
-                throw new ArgumentNullException("beginOfWords");
+                throw new ArgumentNullException("value");
             }
 
-            if (beginOfWords == string.Empty)
+            if (value == string.Empty)
             {
                 throw new ArgumentException(
                     "Аргумент содержит пустую строку",
-                    "beginOfWords");
+                    "value");
             }
 
             if (maxCount < 1)
@@ -59,7 +63,7 @@ namespace Ajuz.SmartTextEditor
             }
 
             return _dictionaryWords
-                .Where(w => w.Text.StartsWith(beginOfWords, StringComparison.Ordinal))
+                .Where(w => w.Text.StartsWith(value, StringComparison.Ordinal))
                 .OrderByDescending(w => w.Frequency)
                 .ThenBy(w => w.Text)
                 .Take(maxCount)
