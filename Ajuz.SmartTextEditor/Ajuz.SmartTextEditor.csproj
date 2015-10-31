@@ -39,6 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Utils\ArrayBinarySearchExtensions.cs" />
+    <Compile Include="Utils\ArraySortExtensions.cs" />
+    <Compile Include="FastAutocompleteSearcher.cs" />
     <Compile Include="AutocompleteSearcher.cs" />
     <Compile Include="DictionaryWord.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
