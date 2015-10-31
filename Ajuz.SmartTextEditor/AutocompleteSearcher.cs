@@ -59,7 +59,7 @@ namespace Ajuz.SmartTextEditor
                 throw new ArgumentOutOfRangeException(
                     "maxCount",
                     maxCount,
-                    "Аргумент не может быть меньше 1.");
+                    "Аргумент должен быть не меньше 1.");
             }
 
             return _dictionaryWords

@@ -37,8 +37,8 @@ namespace Ajuz.SmartTextEditor
             {
                 throw new ArgumentOutOfRangeException(
                     "frequency", 
-                    frequency, 
-                    "Аргумент не может быть меньше 1.");
+                    frequency,
+                    "Аргумент должен быть не меньше 1.");
             }
 
             Text = text;
