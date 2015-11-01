@@ -39,6 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IO\AutocompleteOutputWriter.cs" />
+    <Compile Include="IO\BeginningsOfWordsInputReader.cs" />
+    <Compile Include="IO\DictionaryWordsInputReader.cs" />
+    <Compile Include="IO\IInputReader`1.cs" />
+    <Compile Include="IO\IOutputWriter`1.cs" />
     <Compile Include="Utils\ArrayBinarySearchExtensions.cs" />
     <Compile Include="Utils\ArraySortExtensions.cs" />
     <Compile Include="FastAutocompleteSearcher.cs" />
