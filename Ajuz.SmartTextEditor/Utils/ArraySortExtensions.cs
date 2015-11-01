@@ -28,7 +28,7 @@ namespace Ajuz.SmartTextEditor.Utils
         /// <exception cref="ArgumentOutOfRangeException">
         /// countOfTopElements содержит значение меньше 0.
         /// </exception>
-        public static T[] GetTopOrderedByDescending<T>(this T[] array, Comparison<T> comparison, int countOfTopElements) where T: DictionaryWord
+        public static T[] GetTopOrderedByDescending<T>(this T[] array, int countOfTopElements, Comparison<T> comparison)
         {            
             if (array == null)
             {
