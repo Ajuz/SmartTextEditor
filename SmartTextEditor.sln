@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ajuz.SmartTextEditorTests",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ajuz.SmartTextEditor.Standalone", "Ajuz.SmartTextEditor.Standalone\Ajuz.SmartTextEditor.Standalone.csproj", "{2C4AF0A0-268A-4E3B-9F9E-BEAAE168CA19}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ajuz.SmartTextEditor.StandaloneTests", "Ajuz.SmartTextEditor.StandaloneTests\Ajuz.SmartTextEditor.StandaloneTests.csproj", "{A16FB293-F67F-4476-A7EF-B95569CF13FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{2C4AF0A0-268A-4E3B-9F9E-BEAAE168CA19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C4AF0A0-268A-4E3B-9F9E-BEAAE168CA19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C4AF0A0-268A-4E3B-9F9E-BEAAE168CA19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A16FB293-F67F-4476-A7EF-B95569CF13FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A16FB293-F67F-4476-A7EF-B95569CF13FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A16FB293-F67F-4476-A7EF-B95569CF13FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A16FB293-F67F-4476-A7EF-B95569CF13FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
