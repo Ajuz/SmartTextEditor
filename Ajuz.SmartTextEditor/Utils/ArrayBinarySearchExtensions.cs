@@ -14,7 +14,7 @@ namespace Ajuz.SmartTextEditor.Utils
         /// <summary>
         /// Результат бинарного поиска в случае отсуствия совпадений.
         /// </summary>
-        private const int BinarySearchNotFoundResult = -1;
+        public const int BinarySearchNotFoundResult = -1;
 
         /// <summary>
         /// Выполнить бинарный поиск в сортированном массиве с нулевым начальным индексом 
