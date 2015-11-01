@@ -30,9 +30,9 @@ namespace Ajuz.SmartTextEditor.IO
         }
 
         /// <summary>
-        /// Записать в поток автодополнения
+        /// Записать в поток варианты автодополнений для слова
         /// </summary>
-        /// <param name="autocompleteCollection">Набор слов автодополнений</param>
+        /// <param name="autocompleteCollection">Набор вариантов автодополнений</param>
         /// <exception cref="ArgumentNullException">autocompleteCollection содержит null</exception>
         public void Write(IEnumerable<DictionaryWord> autocompleteCollection)
         {
