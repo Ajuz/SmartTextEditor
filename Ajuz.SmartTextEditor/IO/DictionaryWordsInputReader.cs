@@ -52,6 +52,12 @@ namespace Ajuz.SmartTextEditor.IO
 
             var dictionaryWordElements = value.Split(' ');
 
+            if (dictionaryWordElements.Length != 2)
+            {
+                throw new FormatException(
+                    "Некорректный формат строки, содержащей словарное слово");
+            }
+
             var dictionaryWord = new DictionaryWord(
                 dictionaryWordElements[0],
                 int.Parse(dictionaryWordElements[1]));
