@@ -16,7 +16,11 @@ namespace Ajuz.SmartTextEditor.Utils
         /// </summary>
         /// <typeparam name="T">Тип элементов массива</typeparam>
         /// <param name="array">Массив</param>
-        /// <param name="comparison">Правило сравнения элементов</param>
+        /// <param name="comparison">
+        /// Правило сравнения элементов, используемое для определения "топовых" 
+        /// (максимальных) элементов. Используется также для сортировки результата 
+        /// по убыванию.
+        /// </param>
         /// <param name="countOfTopElements">Максимальное количество топовых элементов</param>
         /// <returns>
         /// Массив из топовых (наибольших) элементов исходного массива, 
