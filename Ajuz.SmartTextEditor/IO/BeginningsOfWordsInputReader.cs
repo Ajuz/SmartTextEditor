@@ -33,9 +33,19 @@ namespace Ajuz.SmartTextEditor.IO
         /// Прочитать начала слов из потока
         /// </summary>
         /// <returns>Набор строк, каждая из которых начало слова</returns>
+        /// <exception cref="InvalidOperationException">
+        /// Количество получаемых начальных частей слов меньше 0.
+        /// </exception>
         public IEnumerable<string> Read()
         {
             var beginningsOfWordsCount = int.Parse(_streamReader.ReadLine());
+
+            if (beginningsOfWordsCount < 0)
+            {
+                throw new InvalidOperationException(
+                    "Количество получаемых начальных частей слов меньше 0");
+            }
+
             var beginningsOfWords = new List<string>(beginningsOfWordsCount);
 
             for (int i = 0; i < beginningsOfWordsCount; i++)

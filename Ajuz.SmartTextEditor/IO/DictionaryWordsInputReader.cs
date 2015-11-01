@@ -63,9 +63,19 @@ namespace Ajuz.SmartTextEditor.IO
         /// Прочитать словарные слова из потока.
         /// </summary>
         /// <returns>Набор словарных слов</returns>
+        /// <exception cref="InvalidOperationException">
+        /// Количество получаемых словарных слов меньше 0.
+        /// </exception>
         public IEnumerable<DictionaryWord> Read()
         {
             var dictionaryWordsCount = int.Parse(_streamReader.ReadLine());
+
+            if (dictionaryWordsCount < 0)
+            {
+                throw new InvalidOperationException(
+                    "Количество получаемых словарных слов меньше 0");
+            }
+
             var dictionaryWords = new List<DictionaryWord>(dictionaryWordsCount);
 
             for (int i = 0; i < dictionaryWordsCount; i++)
