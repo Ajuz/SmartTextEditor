@@ -58,6 +58,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FastAutocompleteSearcherTests.cs" />
     <Compile Include="Utils\ArrayBinarySearchExtensionsTests.cs" />
+    <Compile Include="Utils\ArraySortExtensionsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ajuz.SmartTextEditor\Ajuz.SmartTextEditor.csproj">
